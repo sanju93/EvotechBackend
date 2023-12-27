@@ -6,6 +6,7 @@ config();
 class Users {
   async login(req, res) {
     let { email, password } = req.body;
+ 
     try {
       let user = await User.findOne({ email });
       if (user) {
@@ -67,6 +68,7 @@ class Users {
 
       return res.status(201).send("Survey Form Has been filled");
     } catch (err) {
+      console.log(err);
       return res.status(500).send("Internal server Error");
     }
   }
@@ -79,6 +81,7 @@ class Users {
         let survey = await Survey.findById(user.surveyforms[i]);
         results.push(survey);
       }
+
 
       return res.status(201).json({ results });
     } catch (err) {

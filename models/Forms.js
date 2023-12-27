@@ -5,7 +5,6 @@ let SurveySchema = new mongoose.Schema(
     name: String,
     gender: {
       type: String,
-      enum: ["male", "female", "others"],
     },
     nationality: {
       type: String,

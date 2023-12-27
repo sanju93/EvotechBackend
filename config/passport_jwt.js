@@ -2,6 +2,7 @@ import passport from "passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import User from "../models/User.js";
 import { config } from "dotenv";
+config();
 
 passport.use(
   new Strategy(
@@ -11,7 +12,7 @@ passport.use(
     },
     async function (payload, done) {
       try {
-        let user = await User.findById(payload.id);
+        let user = await User.findById(payload.user._id);
 
         if (user) {
           return done(null, user);
